@@ -1,0 +1,11 @@
+insert into freelancer (id, first_name, last_name, email) values (1, 'freelancer1_firstname', 'freelancer1_lastname', 'freelancer1@email.com');
+insert into freelancer (id, first_name, last_name, email) values (2, 'freelancer2_firstname', 'freelancer2_lastname', 'freelancer2@email.com');
+insert into freelancer (id, first_name, last_name, email) values (3, 'freelancer3_firstname', 'freelancer3_lastname', 'freelancer3@email.com');
+insert into freelancer_skill (id, freelancer_id, skill) values (1, 1, 'Java');
+insert into freelancer_skill (id, freelancer_id, skill) values (2, 1, 'Thorntail');
+insert into freelancer_skill (id, freelancer_id, skill) values (3, 1, 'Vert.x');
+insert into freelancer_skill (id, freelancer_id, skill) values (4, 1, 'Spring-Boot');
+insert into freelancer_skill (id, freelancer_id, skill) values (5, 2, 'Java');
+insert into freelancer_skill (id, freelancer_id, skill) values (6, 2, 'Thorntail');
+insert into freelancer_skill (id, freelancer_id, skill) values (7, 3, 'Vert.x');
+insert into freelancer_skill (id, freelancer_id, skill) values (8, 3, 'Spring-Boot');

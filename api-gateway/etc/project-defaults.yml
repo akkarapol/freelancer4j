@@ -1,0 +1,6 @@
+freelancer:
+  service:
+    url: http://freelancer-service-test-lek.apps-c2ab.generic.opentlc.com
+project4j:
+  service:
+    url: http://project-service-test-lek.apps-c2ab.generic.opentlc.com
