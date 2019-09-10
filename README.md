@@ -71,7 +71,19 @@
      a. Retrieve the URL of the freelancer service application:
      
      ```
-     $ export FREELANCER_URL=http://$(oc get route catalog-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
+     $ export FREELANCER_URL=http://$(oc get route catalog-service -n $COOLSTORE_PRJ -o template --template='{{.spec.host}}')
+     ```
+     
+     b.Retrieve all freelancers:
+     
+     ```
+     $ curl -X GET "$FREELANCER_URL/freelancers"
+     ```
+     
+     b.Retrieve a freelancer:
+     
+     ```
+     $ curl -X GET "$FREELANCER_URL/freelancers/1"
      ```
      
   ### 3.2 Project-Service
