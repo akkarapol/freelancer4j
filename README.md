@@ -56,13 +56,13 @@
      -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
      ```
 
-  3. Deploy the Freelancer4J freelancer service application on OpenShift using the Fabric8 Maven plug-in:
+  3. Deploy the freelancer service application on OpenShift using the Fabric8 Maven plug-in:
   
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
       ```
     
-  ###3.2 Project-Service
+  ### 3.2 Project-Service
           
   1. In a terminal, change directory to the root of the project service project   
          
@@ -81,12 +81,33 @@
   3. Create a ConfigMap with the configuration for the project service application: 
   
      ```
-     oc create configmap project-service --from-file=etc/app-config.yml -n $FREELANCER4J_PRJ
+     $ oc create configmap project-service --from-file=etc/app-config.yml -n $FREELANCER4J_PRJ
      ```
   
-  4. Deploy the Freelancer4J project service application on OpenShift using the Fabric8 Maven plug-in:
+  4. Deploy the project service application on OpenShift using the Fabric8 Maven plug-in:
   
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
      ```
     
+  ### 3.3 API-Gateway
+          
+  1. In a terminal, change directory to the root of the API Gateway project   
+         
+     ```          
+     $ cd ~/api-gateway
+     ```
+  2. Create a ConfigMap with the configuration for the API gateway application: 
+  
+     ```
+     $ oc create configmap api-gateway --from-file=etc/project-defaults.yml -n $FREELANCER4J_PRJ
+     ```
+  
+  3. Deploy the API gateway application on OpenShift using the Fabric8 Maven plug-in:
+  
+     ```
+     $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
+     ```  
+     
+     
+     
