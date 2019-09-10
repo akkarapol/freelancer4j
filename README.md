@@ -193,6 +193,47 @@
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
      ```  
+  
+  6. Monitor the deployment of the inventory-service:    
+  
+     ```
+     $ oc get pods -n $COOLSTORE_PRJ -w -n $FREELANCER4J_PRJ
+     ``` 
+  7. Test the project service.
+  
+     a. Retrieve the URL of the API Gateway:
      
+     ```
+     $ export API_GATEWAY=http://$(oc get route api-gateway -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
+     ```  
+
+     b. Retrieves a list of all projects
      
+     ```
+     $ curl -X GET "$API_GATEWAY/gateway/projects"
+     ```
+     
+     c. Retrieves information for the given projectId
+     
+     ```
+     $ curl -X GET "$API_GATEWAY/gateway/projects/1"
+     ```
+     
+     d. Retrieves a list of projects with the given status (open, in_progress, completed, cancelled)
+     
+     ```
+     $ curl -X GET "$API_GATEWAY/gateway/projects/open"
+     ```
+     
+     f. Retrieves a list of all freelancers
+     
+     ```
+     $ curl -X GET "$API_GATEWAY//gateway/freelancers"
+     ```
+     
+     i. Retrieves information for the given freelancer
+     
+     ```
+     $ curl -X GET "$API_GATEWAY/gateway/freelancers/1"
+     ```
      
