@@ -222,7 +222,7 @@
      d. Retrieves a list of projects with the given status (open, in_progress, completed, cancelled)
      
      ```
-     $ curl -X GET "$API_GATEWAY/gateway/projects/open"
+     $ curl -X GET "$API_GATEWAY/gateway/projects/status/cancelled"
      ```
      
      f. Retrieves a list of all freelancers
