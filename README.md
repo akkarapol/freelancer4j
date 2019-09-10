@@ -8,7 +8,7 @@
       $ cd ~/lab 
       ```
 
-   2. Clone the Git repositories containing the lab source code: 
+   2. Clone the Git repositories containing the source code: 
 
       ```
       $ git clone https://github.com/akkarapol/freelancer4j.git
