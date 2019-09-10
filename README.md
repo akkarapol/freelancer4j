@@ -34,7 +34,7 @@
    
  # 3. Deploy the Freelancer4J Microservices to OCP
  
-  ** 3.1 Freelancer-Service **
+  **3.1 Freelancer-Service**
           
   1. In a terminal, change directory to the root of the freelancer service project   
          
