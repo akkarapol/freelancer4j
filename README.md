@@ -1,6 +1,6 @@
 # Freelance4J Inc.
 
-# 1. Clone Source Code
+## 1. Clone Source Code
 
    1. Open a terminal window and change to the lab folder in the home directory:  
 
@@ -14,7 +14,7 @@
       $ git clone https://github.com/akkarapol/freelancer4j.git
       ```
 
-# 2. Create the OpenShift projects to OCP
+## 2. Create the OpenShift projects to OCP
 
    1. log in to OpenShift Container Platform with the oc client:
       
@@ -37,9 +37,9 @@
       $ oc policy add-role-to-user view -z default -n $FREELANCER4J_PRJ
       ```
       
- # 3. Deploy the Freelancer4J Microservices to OCP
+ ## 3. Deploy the Freelancer4J Microservices to OCP
  
-  **3.1 Freelancer-Service**
+  ### 3.1 Freelancer-Service
           
   1. In a terminal, change directory to the root of the freelancer service project   
          
@@ -55,6 +55,7 @@
      -p FREELANCER_DB_PASSWORD=freelancer \ 
      -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
      ```
+   
    3. Deploy the Freelancer4J freelancer service application on OpenShift using the Fabric8 Maven plug-in:
   
      ```
