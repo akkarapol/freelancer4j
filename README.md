@@ -147,20 +147,34 @@
      
   ### 3.3 API-Gateway
           
-  1. In a terminal, change directory to the root of the API Gateway project   
-         
+  1. Display the URLs of the services:
+     
      ```          
+     $ echo $FREELANCER_URL
+     $ echo $PROJECT_URL
+     ```
+  2. Verify the environment variables for URLs are set accordingly. If not, execute the following commands to set the environment variables:
+     
+     ```          
+     $ export FREELANCER_URL=http://$(oc get route freelancer-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
+
+     $ export PROJECT_URL=http://$(oc get route project-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
+     ```
+  
+  3. Create the ConfigMap with the configuration for the api-gateway service application: 
+  
+     ```
+     $ oc create configmap api-gateway \
+     --from-literal=freelancer.service.url=$FREELANCER_URL \
+     --from-literal=project4j.service.url=$PROJECT_URL \
+     -n $FREELANCER4J_PRJ
+     ```
+  
+  4. Deploy the application on OpenShift Container Platform with the Fabric8 Maven plug-in:
+  
+     ```
      $ cd ~/freelancer4j/api-gateway
-     ```
-  2. Create a ConfigMap with the configuration for the API gateway application: 
-  
-     ```
-     $ oc create configmap api-gateway --from-file=etc/project-defaults.yml -n $FREELANCER4J_PRJ
-     ```
-  
-  3. Deploy the API gateway application on OpenShift using the Fabric8 Maven plug-in:
-  
-     ```
+     
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
      ```  
      
