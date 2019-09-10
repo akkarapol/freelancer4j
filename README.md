@@ -126,19 +126,19 @@
      $ export PROJECT_URL=http://$(oc get route project-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
      ```
      
-     b.Retrieve all projects:
+     b. Retrieve all projects:
      
      ```
      $ curl -X GET "$PROJECT_URL/projects"
      ```
      
-     b.Retrieve a project:
+     c. Retrieve a project:
      
      ```
      $ curl -X GET "$PROJECT_URL/projects/1"
      ```
      
-     c.Retrieve project status:
+     d. Retrieve project status:
      
      ```
      $ curl -X GET "$PROJECT_URL/projects/status/open"
@@ -225,13 +225,13 @@
      $ curl -X GET "$API_GATEWAY/gateway/projects/status/cancelled"
      ```
      
-     f. Retrieves a list of all freelancers
+     e. Retrieves a list of all freelancers
      
      ```
      $ curl -X GET "$API_GATEWAY/gateway/freelancers"
      ```
      
-     i. Retrieves information for the given freelancer
+     f. Retrieves information for the given freelancer
      
      ```
      $ curl -X GET "$API_GATEWAY/gateway/freelancers/1"
