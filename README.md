@@ -47,7 +47,7 @@
      $ cd ~/freelancer-service          
      ```
           
-   2. Deploy an instance of Postgresql on OCP using the freelancer-service-postgresql-persistent.yaml template in the freelancer-service/ocp directory in the directory:
+  2. Deploy an instance of Postgresql on OCP using the freelancer-service-postgresql-persistent.yaml template in the freelancer-service/ocp directory in the directory:
          
      ``` 
      $ oc process -f ocp/freelancer-service-postgresql-persistent.yaml \ 
@@ -56,7 +56,7 @@
      -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
      ```
    
-   3. Deploy the Freelancer4J freelancer service application on OpenShift using the Fabric8 Maven plug-in:
+  3. Deploy the Freelancer4J freelancer service application on OpenShift using the Fabric8 Maven plug-in:
   
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
