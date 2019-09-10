@@ -44,8 +44,9 @@
           
   2. Deploy an instance of Postgresql on OpenShift Container Platform using the freelancer-service-postgresql-persistent.yaml template in the project-service/ocp directory in the directory:
          
-          ``` 
-          $ oc process -f ocp/project-service-mongodb-persistent.yaml \
-          -p PROJECT_DB_USERNAME=mongo \
-          -p PROJECT_DB_PASSWORD=mongo | oc create -f - -n $FREELANCER4J_PRJ
-          ```
+     ``` 
+     $ oc process -f ocp/freelancer-service-postgresql-persistent.yaml \ 
+     -p FREELANCER_DB_USERNAME=freelancer \ 
+     -p FREELANCER_DB_PASSWORD=freelancer \ 
+     -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
+     ```
