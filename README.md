@@ -42,7 +42,7 @@
      $ cd ~/lab/catalog-service          
      ```
           
-  2. Deploy an instance of Postgresql on OpenShift Container Platform using the freelancer-service-postgresql-persistent.yaml template in the project-service/ocp directory in the directory:
+  2. Deploy an instance of Postgresql on OCP using the freelancer-service-postgresql-persistent.yaml template in the project-service/ocp directory in the directory:
          
      ``` 
      $ oc process -f ocp/freelancer-service-postgresql-persistent.yaml \ 
