@@ -147,19 +147,20 @@
      
   ### 3.3 API-Gateway
           
-  1. Display the URLs of the services:
-     
-     ```          
-     $ echo $FREELANCER_URL
-     
-     $ echo $PROJECT_URL
-     ```
-  2. Verify the environment variables for URLs are set accordingly. If not, execute the following commands to set the environment variables:
+  1. Verify the environment variables for URLs are set accordingly. If not, execute the following commands to set the environment variables:
      
      ```          
      $ export FREELANCER_URL=http://$(oc get route freelancer-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
 
      $ export PROJECT_URL=http://$(oc get route project-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
+     ```
+  
+  2. Display the URLs of the services:
+     
+     ```          
+     $ echo $FREELANCER_URL
+     
+     $ echo $PROJECT_URL
      ```
   
   3. Create the ConfigMap with the configuration for the api-gateway service application: 
