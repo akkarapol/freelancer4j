@@ -29,7 +29,7 @@ public interface ProjectService {
 
     void getProject(String projectId, Handler<AsyncResult<Project>> resulthandler);
     
-    void getProjectStatus(String projectStatus, Handler<AsyncResult<Project>> resulthandler);
+    void getProjectStatus(String projectStatus, Handler<AsyncResult<List<Project>>> resulthandler);
 
     void ping(Handler<AsyncResult<String>> resultHandler);
 

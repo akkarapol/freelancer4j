@@ -202,7 +202,7 @@ public class ApiVerticleTest {
     @Test
     public void testGetProjectStatus(TestContext context) throws Exception {
         String projectId2 = "222222";
-        JsonObject json = new JsonObject()
+        JsonObject jsonInput = new JsonObject()
         		.put("projectId", projectId2)
                 .put("ownerFirstName", "ownerFirstNameTest2")
                 .put("ownerLastName", "ownerLastNameTest2")
@@ -210,11 +210,12 @@ public class ApiVerticleTest {
                 .put("projectTitle", "ProjectTitleTest2")
                 .put("projectDesc", "ProjectDescTest2")
                 .put("projectStatus", "cancelled");
-        Project project = new Project(json);
+        List<Project> projects = new ArrayList<>();
+        projects.add(new Project(jsonInput));
         doAnswer(new Answer<Void>() {
             public Void answer(InvocationOnMock invocation){
-                Handler<AsyncResult<Project>> handler = invocation.getArgument(1);
-                handler.handle(Future.succeededFuture(project));
+                Handler<AsyncResult<List<Project>>> handler = invocation.getArgument(1);
+                handler.handle(Future.succeededFuture(projects));
                 return null;
              }
          }).when(projectService).getProjectStatus(eq("cancelled"),any());
@@ -224,10 +225,15 @@ public class ApiVerticleTest {
                 assertThat(response.statusCode(), equalTo(200));
                 assertThat(response.headers().get("Content-type"), equalTo("application/json"));
                 response.bodyHandler(body -> {
-                    JsonObject result = body.toJsonObject();
-                    assertThat(result, notNullValue());
-                    assertThat(result.containsKey("projectId"), is(true));
-                    assertThat(result.getString("projectStatus"), equalTo("cancelled"));
+                	
+                	JsonArray json = body.toJsonArray();
+                    Set<String> itemIds =  json.stream()
+                            .map(j -> new Project((JsonObject)j))
+                            .map(p -> p.getProjectStatus())
+                            .collect(Collectors.toSet());
+                    
+                    assertThat(itemIds, notNullValue());
+                    assertThat(itemIds.contains("cancelled"), is(true));
                     verify(projectService).getProjectStatus(eq("cancelled"),any());
                     async.complete();
                 })

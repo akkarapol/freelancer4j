@@ -10,6 +10,7 @@ import javax.ws.rs.ServiceUnavailableException;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
@@ -35,7 +36,7 @@ public class ProjectService {
     }
 
     public List<Project> getProjects() {
-        Response response = projectService.path("projects").request().get();
+        Response response = projectService.path("projects").request(MediaType.APPLICATION_JSON).get();
         if (response.getStatus() == 200) {
         	List<Project> projects = response.readEntity(new GenericType<List<Project>>() {});
             return projects;
@@ -47,7 +48,7 @@ public class ProjectService {
     }
     
 	public Project getProjectId(String projectId) {
-		Response response = projectService.path("projects/"+projectId).request().get();
+		Response response = projectService.path("projects/"+projectId).request(MediaType.APPLICATION_JSON).get();
         if (response.getStatus() == 200) {
         	Project projects = response.readEntity(Project.class);
             return projects;
@@ -59,8 +60,9 @@ public class ProjectService {
 	}
 	
 	public List<Project> getProjectStatus(String projectStatus) {
-		Response response = projectService.path("projects/status/"+projectStatus).request().get();
-        if (response.getStatus() == 200) {
+		Response response = projectService.path("projects/status/"+projectStatus).request(MediaType.APPLICATION_JSON).get();
+        System.out.println("response.getStatus()==>"+response.getStatus());
+		if (response.getStatus() == 200) {
         	List<Project> projects = response.readEntity(new GenericType<List<Project>>() {});
             return projects;
         } else if (response.getStatus() == 404) {

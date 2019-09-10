@@ -1,6 +1,6 @@
 freelancer:
   service:
-    url: http://freelancer-service-test-lek.apps-c2ab.generic.opentlc.com
+    url: << update URL for $FREELANCER_URL >>
 project4j:
   service:
-    url: http://project-service-test-lek.apps-c2ab.generic.opentlc.com
+    url: << update URL for $PROJECT_URL >>

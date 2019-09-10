@@ -164,7 +164,7 @@ public class ProjectServiceVertxProxyHandler extends ProxyHandler {
                 msg.reply(new ServiceException(-1, res.cause().getMessage()));
               }
             } else {
-              msg.reply(res.result() == null ? null : res.result().toJson());
+              msg.reply(new JsonArray(res.result().stream().map(Project::toJson).collect(Collectors.toList())));
             }
          });
           break;

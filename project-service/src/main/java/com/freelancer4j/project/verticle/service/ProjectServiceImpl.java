@@ -54,16 +54,14 @@ public class ProjectServiceImpl implements ProjectService {
     }
     
     @Override
-    public void getProjectStatus(String projectStatus, Handler<AsyncResult<Project>> resulthandler) {
+    public void getProjectStatus(String projectStatus, Handler<AsyncResult<List<Project>>> resulthandler) {
         JsonObject query = new JsonObject().put("projectStatus", projectStatus);
         client.find("projects", query, ar -> {
             if (ar.succeeded()) {
-                Optional<JsonObject> result = ar.result().stream().findFirst();
-                if (result.isPresent()) {
-                    resulthandler.handle(Future.succeededFuture(new Project(result.get())));
-                } else {
-                    resulthandler.handle(Future.succeededFuture(null));
-                }
+            	List<Project> projects = ar.result().stream()
+                        .map(json -> new Project(json))
+                        .collect(Collectors.toList());
+            	resulthandler.handle(Future.succeededFuture(projects));
             } else {
                 resulthandler.handle(Future.failedFuture(ar.cause()));
             }

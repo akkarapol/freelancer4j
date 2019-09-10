@@ -240,8 +240,8 @@ public class ProjectServiceTest extends MongoTestBase {
                 context.fail(ar.cause().getMessage());
             } else {
                 assertThat(ar.result(), notNullValue());
-                assertThat(ar.result().getProjectId(), equalTo("222222"));
-                assertThat(ar.result().getProjectStatus(), equalTo("cancelled"));
+                assertThat(ar.result().get(0).getProjectId(), equalTo("222222"));
+                assertThat(ar.result().get(0).getProjectStatus(), equalTo("cancelled"));
                 async.complete();
             }
         });

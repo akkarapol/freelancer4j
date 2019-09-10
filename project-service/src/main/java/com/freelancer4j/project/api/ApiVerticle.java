@@ -97,17 +97,15 @@ public class ApiVerticle extends AbstractVerticle {
     private void getProjectStatus(RoutingContext rc) {
         String projectStatus = rc.request().getParam("theStatus");
         projectService.getProjectStatus(projectStatus, ar -> {
-            if (ar.succeeded()) {
-                Project project = ar.result();
-                JsonObject json;
-                if (project != null) {
-                    json = project.toJson();
-                    rc.response()
-                            .putHeader("Content-type", "application/json")
-                            .end(json.encodePrettily());
-                } else {
-                    rc.fail(404);
-                }
+        	if (ar.succeeded()) {
+                List<Project> projects = ar.result();
+                JsonArray json = new JsonArray();
+                projects.stream()
+                        .map(p -> p.toJson())
+                        .forEach(p -> json.add(p));
+                rc.response()
+                        .putHeader("Content-type", "application/json")
+                        .end(json.encodePrettily());
             } else {
                 rc.fail(ar.cause());
             }

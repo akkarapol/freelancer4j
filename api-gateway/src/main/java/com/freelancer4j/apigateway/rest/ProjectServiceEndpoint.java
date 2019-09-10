@@ -1,6 +1,7 @@
 package com.freelancer4j.apigateway.rest;
 
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -10,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.freelancer4j.apigateway.model.Project;
 import com.freelancer4j.apigateway.service.ProjectService;
 

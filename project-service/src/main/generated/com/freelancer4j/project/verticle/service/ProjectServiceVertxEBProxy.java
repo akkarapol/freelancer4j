@@ -102,7 +102,7 @@ public class ProjectServiceVertxEBProxy implements ProjectService {
     });
   }
 
-  public void getProjectStatus(String projectStatus, Handler<AsyncResult<Project>> resulthandler) {
+  public void getProjectStatus(String projectStatus, Handler<AsyncResult<List<Project>>> resulthandler) {
     if (closed) {
       resulthandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
@@ -111,12 +111,12 @@ public class ProjectServiceVertxEBProxy implements ProjectService {
     _json.put("projectStatus", projectStatus);
     DeliveryOptions _deliveryOptions = (_options != null) ? new DeliveryOptions(_options) : new DeliveryOptions();
     _deliveryOptions.addHeader("action", "getProjectStatus");
-    _vertx.eventBus().<JsonObject>send(_address, _json, _deliveryOptions, res -> {
+    _vertx.eventBus().<JsonArray>send(_address, _json, _deliveryOptions, res -> {
       if (res.failed()) {
         resulthandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resulthandler.handle(Future.succeededFuture(res.result().body() == null ? null : new Project(res.result().body())));
-                      }
+        resulthandler.handle(Future.succeededFuture(res.result().body().stream().map(o -> o instanceof Map ? new Project(new JsonObject((Map) o)) : new Project((JsonObject) o)).collect(Collectors.toList())));
+      }
     });
   }
 
