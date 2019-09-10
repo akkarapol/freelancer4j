@@ -36,10 +36,14 @@
  
       3.1 Freelancer-Service
       
+      
+      
+      
+      
           1. In a terminal, change directory to the root of the freelancer service project:
           
-          ```
-          $ cd ~/lab/catalog-service
+          ```          
+          $ cd ~/lab/catalog-service          
           ```
           
           2. Deploy an instance of Postgresql on OpenShift Container Platform using the freelancer-service-postgresql-persistent.yaml template in the project-service/ocp directory in the directory:
