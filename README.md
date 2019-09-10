@@ -55,14 +55,14 @@
      -p FREELANCER_DB_PASSWORD=freelancer \ 
      -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
      ```
-   
+
   3. Deploy the Freelancer4J freelancer service application on OpenShift using the Fabric8 Maven plug-in:
   
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
       ```
     
-  **3.1 Project-Service**
+  ###3.2 Project-Service
           
   1. In a terminal, change directory to the root of the project service project   
          
@@ -70,17 +70,23 @@
      $ cd ~/project-service          
      ```
           
-   2. Deploy an instance of Mongo on OCP using the project-service-mongodb-persistent.yaml template in the project-service/ocp directory in the directory:
+  2. Deploy an instance of Mongo on OCP using the project-service-mongodb-persistent.yaml template in the project-service/ocp directory in the directory:
          
      ``` 
      $ oc process -f ocp/project-service-mongodb-persistent.yaml \
        -p PROJECT_DB_USERNAME=mongo \
        -p PROJECT_DB_PASSWORD=mongo | oc create -f - -n $FREELANCER4J_PRJ
      ```
-   
-   3. Deploy the Freelancer4J project service application on OpenShift using the Fabric8 Maven plug-in:
+     
+  3. Create a ConfigMap with the configuration for the project service application: 
+  
+     ```
+     oc create configmap project-service --from-file=etc/app-config.yml -n $FREELANCER4J_PRJ
+     ```
+  
+  4. Deploy the Freelancer4J project service application on OpenShift using the Fabric8 Maven plug-in:
   
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
-      ```
+     ```
     
