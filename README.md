@@ -44,7 +44,7 @@
   1. In a terminal, change directory to the root of the freelancer service project   
          
      ```          
-     $ cd ~/freelancer-service          
+     $ cd ~/lab/freelancer-service          
      ```
           
   2. Deploy an instance of Postgresql on OCP using the freelancer-service-postgresql-persistent.yaml template in the freelancer-service/ocp directory in the directory:
@@ -67,7 +67,7 @@
   1. In a terminal, change directory to the root of the project service project   
          
      ```          
-     $ cd ~/project-service          
+     $ cd ~/lab/project-service          
      ```
           
   2. Deploy an instance of Mongo on OCP using the project-service-mongodb-persistent.yaml template in the project-service/ocp directory in the directory:
@@ -95,7 +95,7 @@
   1. In a terminal, change directory to the root of the API Gateway project   
          
      ```          
-     $ cd ~/api-gateway
+     $ cd ~/lab/api-gateway
      ```
   2. Create a ConfigMap with the configuration for the API gateway application: 
   
