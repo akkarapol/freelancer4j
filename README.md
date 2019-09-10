@@ -118,24 +118,30 @@
      ```
      $ oc get pods -n $FREELANCER4J_PRJ -w
      ```
-  6. Test the freelancer service.
+  6. Test the project service.
   
-     a. Retrieve the URL of the freelancer service application:
+     a. Retrieve the URL of the project service application:
      
      ```
-     $ export FREELANCER_URL=http://$(oc get route catalog-service -n $COOLSTORE_PRJ -o template --template='{{.spec.host}}')
+     $ export PROJECT_URL=http://$(oc get route project-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
      ```
      
-     b.Retrieve all freelancers:
+     b.Retrieve all projects:
      
      ```
-     $ curl -X GET "$FREELANCER_URL/freelancers"
+     $ curl -X GET "$PROJECT_URL/projects"
      ```
      
-     b.Retrieve a freelancer:
+     b.Retrieve a project:
      
      ```
-     $ curl -X GET "$FREELANCER_URL/freelancers/1"
+     $ curl -X GET "$PROJECT_URL/projects/1"
+     ```
+     
+     c.Retrieve project status:
+     
+     ```
+     $ curl -X GET "$PROJECT_URL/projects/status/open"
      ```
      
      
