@@ -14,7 +14,7 @@
       $ git clone https://github.com/akkarapol/freelancer4j.git
       ```
 
-#2. Deploy the Freelancer4J Microservices to OpenShift Container Platform
+# 2. Create the OpenShift projects to OpenShift Container Platform
 
    1. log in to OpenShift Container Platform with the oc client:
       
@@ -24,10 +24,28 @@
       $ oc login --insecure-skip-tls-verify --server=${OCP_SERVER_URL}
       ```
       
-  2. Create the OpenShift projects to which the application is to be deployed:
+   2. Create the OpenShift projects to which the application is to be deployed:
   
-     ```
-     $ export FREELANCER4J_PRJ=<<insert your project name>>
+      ```
+      $ export FREELANCER4J_PRJ=<<insert your project name>>
 
-     $ oc new-project ${FREELANCER4J_PRJ}
-     ```
+      $ oc new-project $FREELANCER4J_PRJ
+      ```
+   
+ # 3. Deploy the Freelancer4J Microservices to OpenShift Container Platform
+ 
+      3.1 Freelancer-Service
+      
+          1. In a terminal, change directory to the root of the freelancer service project:
+          
+          ```
+          $ cd ~/lab/catalog-service
+          ```
+          
+          2. Deploy an instance of Postgresql on OpenShift Container Platform using the freelancer-service-postgresql-persistent.yaml template in the project-service/ocp directory in the directory:
+         
+          ``` 
+          $ oc process -f ocp/project-service-mongodb-persistent.yaml \
+          -p PROJECT_DB_USERNAME=mongo \
+          -p PROJECT_DB_PASSWORD=mongo | oc create -f - -n $FREELANCER4J_PRJ
+          ```
