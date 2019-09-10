@@ -151,6 +151,7 @@
      
      ```          
      $ echo $FREELANCER_URL
+     
      $ echo $PROJECT_URL
      ```
   2. Verify the environment variables for URLs are set accordingly. If not, execute the following commands to set the environment variables:
