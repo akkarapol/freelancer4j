@@ -1,4 +1,4 @@
-# Freelance4J Inc.
+# Freelance4J Inc. Cloud Native Development
 
 ## 1. Clone Source Code
 
@@ -51,9 +51,9 @@
          
      ``` 
      $ oc process -f ocp/freelancer-service-postgresql-persistent.yaml \ 
-     -p FREELANCER_DB_USERNAME=freelancer \ 
-     -p FREELANCER_DB_PASSWORD=freelancer \ 
-     -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
+       -p FREELANCER_DB_USERNAME=freelancer \ 
+       -p FREELANCER_DB_PASSWORD=freelancer \ 
+       -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
      ```
 
   3. Deploy the freelancer service application on OpenShift using the Fabric8 Maven plug-in:
