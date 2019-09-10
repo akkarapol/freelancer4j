@@ -197,7 +197,7 @@
   6. Monitor the deployment of the inventory-service:    
   
      ```
-     $ oc get pods -n $COOLSTORE_PRJ -w -n $FREELANCER4J_PRJ
+     $ oc get pods -w -n $FREELANCER4J_PRJ
      ``` 
   7. Test the project service.
   
