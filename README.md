@@ -74,13 +74,13 @@
      $ export FREELANCER_URL=http://$(oc get route freelancer-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
      ```
      
-     b.Retrieve all freelancers:
+     b. Retrieve all freelancers:
      
      ```
      $ curl -X GET "$FREELANCER_URL/freelancers"
      ```
      
-     b.Retrieve a freelancer:
+     c. Retrieve a freelancer:
      
      ```
      $ curl -X GET "$FREELANCER_URL/freelancers/1"
