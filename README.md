@@ -61,7 +61,19 @@
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
       ```
-    
+  4. Monitor the deployment of the freelancer-service:
+     
+     ```
+     $ oc get pods -n $FREELANCER4J_PRJ -w
+     ```
+  6. Test the freelancer service.
+  
+     a. Retrieve the URL of the freelancer service application:
+     
+     ```
+     $ export FREELANCER_URL=http://$(oc get route catalog-service -n $FREELANCER4J_PRJ -o template --template='{{.spec.host}}')
+     ```
+     
   ### 3.2 Project-Service
           
   1. In a terminal, change directory to the root of the project service project   
@@ -89,7 +101,32 @@
      ```
      $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$FREELANCER4J_PRJ
      ```
-    
+  5. Monitor the deployment of the project-service:
+     
+     ```
+     $ oc get pods -n $FREELANCER4J_PRJ -w
+     ```
+  6. Test the freelancer service.
+  
+     a. Retrieve the URL of the freelancer service application:
+     
+     ```
+     $ export FREELANCER_URL=http://$(oc get route catalog-service -n $COOLSTORE_PRJ -o template --template='{{.spec.host}}')
+     ```
+     
+     b.Retrieve all freelancers:
+     
+     ```
+     $ curl -X GET "$FREELANCER_URL/freelancers"
+     ```
+     
+     b.Retrieve a freelancer:
+     
+     ```
+     $ curl -X GET "$FREELANCER_URL/freelancers/1"
+     ```
+     
+     
   ### 3.3 API-Gateway
           
   1. In a terminal, change directory to the root of the API Gateway project   
