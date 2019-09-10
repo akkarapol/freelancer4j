@@ -1,11 +1,11 @@
-#Freelance4J Inc.
+# Freelance4J Inc.
 
-1. Clone Source Code
+# 1. Clone Source Code
 
-1 Open a terminal window and change to the lab folder in the home directory:
+  ** 1 Open a terminal window and change to the lab folder in the home directory: ** 
 
-$ cd ~/lab
+     ``` $ cd ~/lab ```
 
-2Clone the Git repositories containing the lab source code:
+  **  2 Clone the Git repositories containing the lab source code: ** 
 
-$ git clone https://github.com/akkarapol/freelancer4j.git
+     ``` $ git clone https://github.com/akkarapol/freelancer4j.git ```
