@@ -5,7 +5,7 @@
    1. Open a terminal window and change to the lab folder in the home directory:  
 
       ```
-      $ cd ~/freelancer4j 
+      $ cd ~/ 
       ```
 
    2. Clone the Git repositories containing the source code: 
