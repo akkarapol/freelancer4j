@@ -228,7 +228,7 @@
      f. Retrieves a list of all freelancers
      
      ```
-     $ curl -X GET "$API_GATEWAY//gateway/freelancers"
+     $ curl -X GET "$API_GATEWAY/gateway/freelancers"
      ```
      
      i. Retrieves information for the given freelancer
