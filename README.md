@@ -5,7 +5,7 @@
    1. Open a terminal window and change to the lab folder in the home directory:  
 
       ```
-      $ cd ~/lab 
+      $ cd ~/freelancer4j 
       ```
 
    2. Clone the Git repositories containing the source code: 
@@ -44,7 +44,7 @@
   1. In a terminal, change directory to the root of the freelancer service project   
          
      ```          
-     $ cd ~/lab/freelancer-service          
+     $ cd ~/freelancer4j/freelancer-service          
      ```
           
   2. Deploy an instance of Postgresql on OCP using the freelancer-service-postgresql-persistent.yaml template in the freelancer-service/ocp directory in the directory:
@@ -67,7 +67,7 @@
   1. In a terminal, change directory to the root of the project service project   
          
      ```          
-     $ cd ~/lab/project-service          
+     $ cd ~/freelancer4j/project-service          
      ```
           
   2. Deploy an instance of Mongo on OCP using the project-service-mongodb-persistent.yaml template in the project-service/ocp directory in the directory:
@@ -95,7 +95,7 @@
   1. In a terminal, change directory to the root of the API Gateway project   
          
      ```          
-     $ cd ~/lab/api-gateway
+     $ cd ~/freelancer4j/api-gateway
      ```
   2. Create a ConfigMap with the configuration for the API gateway application: 
   
