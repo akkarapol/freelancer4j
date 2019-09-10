@@ -1,6 +1,4 @@
-# Freelance4J Inc. Cloud Native Development
-
- ## 3. Deploy the Freelancer4J Freelancer-Service Microservices to OCP
+# Deploy the Freelancer4J Freelancer-Service Microservices to OCP
          
   1. In a terminal, change directory to the root of the freelancer service project   
          
