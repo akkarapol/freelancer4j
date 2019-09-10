@@ -31,7 +31,12 @@
 
       $ oc new-project $FREELANCER4J_PRJ
       ```
+   3. Add the view role to the default service account:
    
+      ```
+      $ oc policy add-role-to-user view -z default -n $FREELANCER4J_PRJ
+      ```
+      
  # 3. Deploy the Freelancer4J Microservices to OCP
  
   **3.1 Freelancer-Service**
@@ -50,3 +55,9 @@
      -p FREELANCER_DB_PASSWORD=freelancer \ 
      -p FREELANCER_DB_NAME=freelancerdb | oc create -f - -n $FREELANCER4J_PRJ
      ```
+  3. Deploy the Coolstore catalog service application on OpenShift using the Fabric8 Maven plug-in:
+  
+     ```
+     $ mvn clean fabric8:deploy -Popenshift -Dfabric8.namespace=$COOLSTORE_PRJ
+      ```
+    
